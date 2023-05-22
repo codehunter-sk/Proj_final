@@ -52,9 +52,6 @@ def fetch_data(userid):
                 msgbox.showinfo("Last Admin", "Last admin!Pls make someone else admin")
                 clear()
                 main(window,root,org_userid)
-        
-
-
 
     clear()
     
@@ -65,17 +62,15 @@ def fetch_data(userid):
 
     for i in [80,120,160]:
         tk.Label(root,text=":",font=('times new roman',20,'bold'),bg=bgcolour,fg="white").place(x=530,y=i)
-    # Create corresponding labels for userid and username
+
     userid_value = tk.Label(root,text=user_det[0][1],font=('times new roman',20,'bold'),bg=bgcolour,fg="white")
     username_value = tk.Label(root,text=user_det[0][0],font=('times new roman',20,'bold'),bg=bgcolour,fg="white")
 
-    # Create a radio button for admin status
     admin_status = tk.StringVar()
     admin_status.set(user_det[0][2])
     admin_radiobutton = tk.Radiobutton(root, text="Admin", variable=admin_status, value="y",font=('times new roman',20,'bold'),bg=bgcolour,fg="white",selectcolor=bgcolour)
     nonadmin_radiobutton = tk.Radiobutton(root, text="Non-Admin", variable=admin_status, value="n",font=('times new roman',20,'bold'),bg=bgcolour,fg="white",selectcolor=bgcolour)
 
-    # Place the labels and widgets on the window using grid layout
     userid_label.place(x=350,y=80)
     username_label.place(x=350,y=120)
     admin_label.place(x=350,y=160)

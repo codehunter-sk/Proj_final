@@ -2,8 +2,6 @@ from tkinter import *
 from Attendance import myconn
 from tkinter import ttk
 from Dashboard import dashpage
-from tkinter import filedialog as fd
-from tkinter import messagebox as msgbox
 import csv
 
 
@@ -11,7 +9,6 @@ def cnx():
     global connection, cursor, ds
     connection = myconn.myconn()
     cursor = connection.cursor()
-    # cursor.execute("SET TRANSACTION ISOLATION LEVEL READ COMMITTED")
     cursor.execute('use eventide04')
     ds = myconn.ds
 
@@ -67,8 +64,6 @@ def wind1(uid):
 
     frame2 = Frame(root, height=500, width=1200, bg='maroon')
     frame2.grid(row=3, column=0)
-    # frame2.grid_propagate(0)
-
 
     partWindow = Text(frame2, bd=2, wrap='none', bg='#DCD094', fg='#000000', cursor='hand2', width='105', height='28',
                       font=('Courier', 10), insertbackground='#000000', insertborderwidth=10)
@@ -85,7 +80,6 @@ def wind1(uid):
     namelabel.place(x = 900, y = 14)
     nameinput=Text(frame2, height = 1, width = 22, font=C14)
     nameinput.place(x = 900, y = 50)
-    # nameinput.focus_set()
 
     eidlabel=Label(frame2,text='Event ID: ', font=C14, bg='#dcd094')
     eidlabel.place(x = 900, y = 104)
@@ -96,8 +90,6 @@ def wind1(uid):
     idlabel.place(x = 900, y = 194)
     idinput=Text(frame2, height = 1, width = 22, font=C14)
     idinput.place(x = 900, y = 230)
-
-
 
     citylabel=Label(frame2,text='City: ', font=C14, bg='#dcd094')
     citylabel.place(x = 900, y = 284)
@@ -111,7 +103,6 @@ def wind1(uid):
     city_combo=ttk.Combobox(frame2, textvariable=selected_city,state='readonly',values=cities,font=C14)
     city_combo.place(x = 900, y = 320)
 
-
     clglabel=Label(frame2,text='College: ', font=C14, bg='#dcd094')
     clglabel.place(x = 900, y = 374)
 
@@ -119,7 +110,6 @@ def wind1(uid):
     clgs=['']
     for i in cursor.fetchall():
         clgs.append(i[0])
-    # print(clgs)
 
     selected_clg=StringVar()
     clg_combo=ttk.Combobox(frame2, textvariable=selected_clg,state='readonly',values=clgs,font=C14)

@@ -13,7 +13,6 @@ def cnx():
     global connection , cursor, ds
     connection = myconn.myconn()
     cursor = connection.cursor()
-    # cursor.execute("SET TRANSACTION ISOLATION LEVEL READ COMMITTED")
     cursor.execute('use eventide04')
     ds=myconn.ds
 
@@ -23,50 +22,30 @@ def exit_app():
         root.destroy()
         m.main()
 def attendance_upload():
-#--------------attendance frame-----------------------
-    # att_f=LabelFrame(root,bd=10,relief=GROOVE,text='Update Attendance',font=('times new roman ',15 ,'bold'),fg='gold',bg=bgcolour)
-    # att_f.place(x=0,y=250,relwidth=1,height=350)
     root.destroy()
     attendpage.main(userID)
 def view_part():
-#--------------view participants-----------------------
-    # viewpart_f=LabelFrame(root,bd=10,relief=GROOVE,text='List Of Participants',font=('times new roman ',15 ,'bold'),fg='gold',bg=bgcolour)
-    # viewpart_f.place(x=0,y=250,relwidth=1,height=350)
-    # scroly=Scrollbar(viewpart_f,orient=VERTICAL)
-    # txtarea=Text(viewpart_f,yscrollcommand=scroly.set)
-    # scroly.pack(side=RIGHT,fill=Y)
-    # scroly.config(command=txtarea.yview)
-    # txtarea.pack(fill=BOTH,expand=1)
-    # for i in range (1,10000):
-    #     txtarea.insert(END,str(i))
     root.destroy()
     viewpartpage.main(userID)
 def add_event():
-#--------------add event-----------------------
     addevent_f=LabelFrame(root,bd=10,relief=GROOVE,text='New Event',font=('times new roman ',15 ,'bold'),fg='gold',bg=bgcolour)
     addevent_f.place(x=0,y=250,relwidth=1,height=350)
     addeventpage.evefr(root,cursor,bgcolour)
 
 def add_user():
-#--------------add new user-----------------------
     adduser_f=LabelFrame(root,bd=10,relief=GROOVE,text='New User',font=('times new roman ',15 ,'bold'),fg='gold',bg=bgcolour)
     adduser_f.place(x=0,y=250,relwidth=1,height=350)
-    # root.destroy()
-    # adduserpage.main(userID)
     adduserpage.loginfr(root,cursor,bgcolour)
 
 
 def mod_user():
-#--------------modify user role-----------------------
     moduser_f=LabelFrame(root,bd=10,relief=GROOVE,text='Modify user role',font=('times new roman ',15 ,'bold'),fg='gold',bg=bgcolour)
     moduser_f.place(x=0,y=250,relwidth=1,height=350)
     modifypage.main(root,moduser_f,userID)
 
 def add_part():
-#--------------add new participants-----------------------
     addpart_f=LabelFrame(root,bd=10,relief=GROOVE,text='Add participants',font=('times new roman ',15 ,'bold'),fg='gold',bg=bgcolour)
     addpart_f.place(x=0,y=250,relwidth=1,height=350)
-    # root.destroy()
     addpartpage.add_part_func(ds,root,cursor,bgcolour)
 
 
@@ -81,8 +60,6 @@ def eventide(username,admin):
     Frame(root,bg=bgcolour,height=600,width=1200).place(x=0,y=0)
     title=Label(root,text='EVENTIDE',bd=12,relief=GROOVE,bg=bgcolour,fg='white',font=('times new roman',30,'bold')).pack(fill=X)
 
-
-#--------------user frame-------------------
     usr_f=Frame(root,bd=10,relief=GROOVE,bg=bgcolour)
     usr_f.place(x=0,y=71,relwidth=1,height=80)
     wlcstr="Logged in as "+username
@@ -90,9 +67,7 @@ def eventide(username,admin):
         wlcstr+=" (admin)"
     else:
         wlcstr+=" (regular)"
-#-------------------------------------------------
 
-#----------------button frame-------------------------
     btn_f=Frame(root,bd=10,relief=GROOVE,bg=bgcolour)
     btn_f.place(x=0,y=150,relwidth=1,height=100)
     Label(usr_f,text=wlcstr,font=('times new roman',24,'bold'),bg=bgcolour,fg='white').grid(row=2,column=0,padx=20,pady=10,sticky='w')
@@ -115,7 +90,7 @@ def eventide(username,admin):
 
     Button(btn_f,cursor='hand2',text='Logout',bg='cadetblue',fg='white',pady=15,width=8,state=NORMAL,bd=2,font='arial 15 bold',command=exit_app).grid(row=0,column=8,padx=5,pady=5)
     root.mainloop()
-#-----------------------------------------------------
+
 
 def main(id):
     global userID

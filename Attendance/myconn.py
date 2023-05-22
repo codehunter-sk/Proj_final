@@ -10,7 +10,6 @@ def myconn():
                          user=userid,
                          passwd='',
                          autocommit=True,
-                         # transaction_isolation="READ COMMITTED"
                          )
         return mycon
     except:
